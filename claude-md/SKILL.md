@@ -23,6 +23,8 @@ Always ask first:
 - **Project-level** → `<repo>/CLAUDE.md` or `<repo>/<module>/CLAUDE.md`. About this codebase.
 - **User-level** → `~/.claude/CLAUDE.md`. About the user. Applies across every project.
 
+**Fallback:** If the user didn't specify and the agent didn't ask, default to project-level.
+
 Workflow branches from here.
 
 ---
@@ -36,6 +38,7 @@ Workflow branches from here.
 3. **`Do NOT introduce` block mandatory.** ≥3 entries with one-line reasons.
 4. **No prose, history, marketing, values.**
 5. **Sensitive dirs (`auth/`, `billing/`, `infra/`, `migrations/`) get their own CLAUDE.md.**
+6. **Single language throughout.** Don't mix languages in the file. Choose based on the user's language or existing CLAUDE.md. Technical terms (library names, CLI commands, file paths) are not considered mixing.
 
 ### Pre-generation scan
 
@@ -150,6 +153,7 @@ Changes / Goal-Driven. Paraphrase tone, don't drop principles silently.]
 1. **≤ 150 lines.** Tighter than project-level — applies to every project.
 2. **No project-specific content.** If a rule applies only to one repo, it belongs in that repo's CLAUDE.md.
 3. **Every preference must be actionable.** "I like clean code" → out. "Prefer named exports" → in.
+4. **Single language throughout.** Same rule as project-level — don't mix languages.
 
 ---
 
@@ -178,6 +182,15 @@ Print line count + 30-second test:
 - User-level: can a stranger answer "what does this person build / what do they default to / how do they communicate"?
 
 If no, fix before declaring done.
+
+## Omit, don't placeholder
+
+If a skeleton section has no real content for this project/user, **drop the entire section**. Never write filler entries such as:
+- "Hooks: none" / "Memory: N/A" / "No hooks configured"
+- "Not a Python project" / "No framework" / "None applicable"
+- Any entry whose value is "无", "none", "N/A", "—", or semantically equivalent
+
+A shorter file with only relevant sections beats a "complete" file padded with empties.
 
 ## Refuse to add
 
